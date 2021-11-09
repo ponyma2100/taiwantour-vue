@@ -31,6 +31,5 @@ export default {};
 h1,
 h3 {
   color: whitesmoke;
-  letter-spacing: 0.03em;
 }
 </style>

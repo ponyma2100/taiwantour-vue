@@ -19,7 +19,7 @@ const getScenicSpot = (city) => {
     } catch (error) {
       console.log(error)
     }
-    return scenicSpot
+    return { scenicSpot }
   }
 
   return { loadSpot, scenicSpot }

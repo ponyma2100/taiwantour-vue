@@ -15,6 +15,7 @@ const getScenicSpot = (city) => {
       const res = await fetch(`${url}${queryCity}?$top=${queryNum}&$format=JSON`)
       const data = await res.json()
       scenicSpot.value = data
+      console.log("🚀 ~ file: getScenicSpot.js ~ line 18 ~ loadSpot ~ scenicSpot.value", scenicSpot.value)
 
     } catch (error) {
       console.log(error)

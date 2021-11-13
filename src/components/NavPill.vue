@@ -2,57 +2,161 @@
   <div class="nav-container">
     <h1>縣市快選</h1>
     <ul class="nav-tabs">
-      <li class="nav-item">
+      <li class="nav-item" @click="toggleShowNorthern">
         <div class="circle">
-          <img src="../assets/north.png" alt="north" />
+          <img src="../assets/north.png" alt="northern" />
         </div>
         <p>北部</p>
         <div class="active"></div>
       </li>
-      <li class="nav-item">中部</li>
-      <li class="nav-item">南部</li>
-      <li class="nav-item">東部</li>
-      <li class="nav-item">離島</li>
-    </ul>
-    <ul class="nav-pills">
-      <li class="nav-item" @click="handleClick('台北市')">
-        <router-link :to="{ name: 'Overview', params: { city: 'Taipei' } }"
-          >台北市</router-link
-        >
+      <li class="nav-item" @click="toggleShowCentral">
+        <div class="circle">
+          <img src="../assets/north.png" alt="central" />
+        </div>
+        <p>中部</p>
         <div class="active"></div>
       </li>
-      <li class="nav-item" @click="handleClick('新北市')">
-        <router-link :to="{ name: 'Overview', params: { city: 'NewTaipei' } }"
-          >新北市</router-link
-        >
+      <li class="nav-item" @click="toggleShowSouthern">
+        <div class="circle">
+          <img src="../assets/north.png" alt="southern" />
+        </div>
+        <p>南部</p>
+        <div class="active"></div>
       </li>
-      <li class="nav-item">
-        <p>基隆市</p>
+      <li class="nav-item" @click="toggleShowEastern">
+        <div class="circle">
+          <img src="../assets/north.png" alt="north" />
+        </div>
+        <p>東部</p>
+        <div class="active"></div>
       </li>
-      <li class="nav-item">
-        <p>新竹市</p>
-      </li>
-      <li class="nav-item">
-        <p>桃園市</p>
-      </li>
-      <li class="nav-item">
-        <p>新竹縣</p>
-      </li>
-      <li class="nav-item">
-        <p>宜蘭縣</p>
+      <li class="nav-item" @click="toggleShowOffshore">
+        <div class="circle">
+          <img src="../assets/north.png" alt="offshore" />
+        </div>
+        <p>離島</p>
+        <div class="active"></div>
       </li>
     </ul>
+
+    <ul class="nav-pills-northern" v-show="isShowNorthern">
+      <li
+        class="nav-item"
+        v-for="city in cityName.northern"
+        :key="city.cityName"
+      >
+        <router-link
+          :to="{ name: 'Overview', params: { city: city.engName } }"
+          >{{ city.chtName }}</router-link
+        >
+      </li>
+    </ul>
+    <ul class="nav-pills-northern" v-show="isShowCentral">
+      <li
+        class="nav-item"
+        v-for="city in cityName.central"
+        :key="city.cityName"
+      >
+        <router-link
+          :to="{ name: 'Overview', params: { city: city.engName } }"
+          >{{ city.chtName }}</router-link
+        >
+      </li>
+    </ul>
+    <ul class="nav-pills-northern" v-show="isShowSouthern">
+      <li
+        class="nav-item"
+        v-for="city in cityName.southern"
+        :key="city.cityName"
+      >
+        <router-link
+          :to="{ name: 'Overview', params: { city: city.engName } }"
+          >{{ city.chtName }}</router-link
+        >
+      </li>
+    </ul>
+    <ul class="nav-pills-northern" v-show="isShowEastern">
+      <li
+        class="nav-item"
+        v-for="city in cityName.eastern"
+        :key="city.cityName"
+      >
+        <router-link
+          :to="{ name: 'Overview', params: { city: city.engName } }"
+          >{{ city.chtName }}</router-link
+        >
+      </li>
+    </ul>
+    <ul class="nav-pills-northern" v-show="isShowOffshore">
+      <li
+        class="nav-item"
+        v-for="city in cityName.offshore"
+        :key="city.cityName"
+      >
+        <router-link
+          :to="{ name: 'Overview', params: { city: city.engName } }"
+          >{{ city.chtName }}</router-link
+        >
+      </li>
+    </ul>
+
+    <!-- <ul
+      v-for="location in cityName"
+      :key="location"
+      class="nav-pills-northern"
+      v-show="isShowNorthern"
+    >
+      <li class="nav-item" v-for="city in location" :key="city.cityName">
+        <router-link
+          :to="{ name: 'Overview', params: { city: city.engName } }"
+          >{{ city.chtName }}</router-link
+        >
+      </li>
+    </ul> -->
   </div>
 </template>
 
 <script>
+import { ref } from "@vue/reactivity";
+import cityName from "../../data/cityData";
+
 export default {
   setup() {
-    const handleClick = (select) => {
-      console.log(select);
+    const isShowNorthern = ref(false);
+    const isShowCentral = ref(false);
+    const isShowSouthern = ref(false);
+    const isShowEastern = ref(false);
+    const isShowOffshore = ref(false);
+
+    const toggleShowNorthern = () => {
+      isShowNorthern.value = !isShowNorthern.value;
+    };
+    const toggleShowCentral = () => {
+      isShowCentral.value = !isShowCentral.value;
+    };
+    const toggleShowSouthern = () => {
+      isShowSouthern.value = !isShowSouthern.value;
+    };
+    const toggleShowEastern = () => {
+      isShowEastern.value = !isShowEastern.value;
+    };
+    const toggleShowOffshore = () => {
+      isShowOffshore.value = !isShowOffshore.value;
     };
 
-    return { handleClick };
+    return {
+      toggleShowNorthern,
+      toggleShowCentral,
+      toggleShowSouthern,
+      toggleShowEastern,
+      toggleShowOffshore,
+      isShowNorthern,
+      isShowCentral,
+      isShowSouthern,
+      isShowEastern,
+      isShowOffshore,
+      cityName,
+    };
   },
 };
 </script>
@@ -83,6 +187,7 @@ ul {
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.12);
   border-radius: 15px;
   margin: 1rem;
+  cursor: pointer;
 }
 .circle {
   width: 76px;
@@ -103,11 +208,11 @@ ul {
   border-radius: 50%;
   background: #c2c2c2;
 }
-.nav-pills {
+.nav-pills-northern {
   display: flex;
   padding: 20px;
 }
-.nav-pills > .nav-item {
+.nav-pills-northern > .nav-item {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -117,13 +222,10 @@ ul {
   width: 87px;
 }
 
-.nav-pills > .nav-item > .active {
-  width: 13px;
-  height: 4px;
-  background: #10cc9f;
-  border-radius: 2.5px;
+a.router-link-active {
+  border-bottom: 2px solid #10cc9f;
 }
-.nav-pills > .nav-item:hover {
+.nav-pills-northern > .nav-item:hover {
   width: 87px;
   height: 40px;
   background: #ffffff;

@@ -15,12 +15,16 @@
       <li class="nav-item">離島</li>
     </ul>
     <ul class="nav-pills">
-      <li class="nav-item">
-        <p>台北市</p>
+      <li class="nav-item" @click="handleClick('台北市')">
+        <router-link :to="{ name: 'Overview', params: { city: 'Taipei' } }"
+          >台北市</router-link
+        >
         <div class="active"></div>
       </li>
-      <li class="nav-item">
-        <p>新北市</p>
+      <li class="nav-item" @click="handleClick('新北市')">
+        <router-link :to="{ name: 'Overview', params: { city: 'NewTaipei' } }"
+          >新北市</router-link
+        >
       </li>
       <li class="nav-item">
         <p>基隆市</p>
@@ -42,7 +46,15 @@
 </template>
 
 <script>
-export default {};
+export default {
+  setup() {
+    const handleClick = (select) => {
+      console.log(select);
+    };
+
+    return { handleClick };
+  },
+};
 </script>
 
 <style scoped>
@@ -51,6 +63,7 @@ export default {};
   flex-direction: column;
   align-items: center;
   padding: 1rem;
+  background: #f6f6f6;
 }
 ul {
   display: flex;

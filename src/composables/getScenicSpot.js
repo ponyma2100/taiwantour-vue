@@ -4,10 +4,10 @@ import { ref } from 'vue'
 // https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/Taipei?$top=10&$format=JSON
 
 
-const getScenicSpot = (city) => {
+const getScenicSpot = () => {
   const scenicSpot = ref([])
 
-  const loadSpot = async () => {
+  const loadSpot = async (city) => {
     const url = 'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/'
     const queryNum = '10'
     const queryCity = city ? city : ''

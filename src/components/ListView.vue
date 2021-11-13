@@ -68,7 +68,7 @@
           <div v-if="spot.Class3" class="spot-tag3">
             {{ spot.Class3 }}
           </div>
-          <div class="spot-city">
+          <div class="spot-city" v-if="spot.Address">
             {{ spot.Address.substring(0, 3) }}
           </div>
         </div>

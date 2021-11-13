@@ -2,23 +2,24 @@
   <div class="container">
     <Banner />
     <NavPill />
-    <ListView :scenicSpot="scenicSpot" />
+    <CityDetail :scenicSpot="scenicSpot" />
   </div>
 </template>
 
 <script>
 import getScenicSpot from "../composables/getScenicSpot";
 import Banner from "../components/Banner.vue";
-import ListView from "../components/ListView.vue";
+import CityDetail from "../components/cityDetail.vue";
 import NavPill from "../components/NavPill.vue";
 import { onBeforeRouteUpdate, useRoute } from "vue-router";
 
 export default {
-  components: { Banner, ListView, NavPill },
+  components: { Banner, CityDetail, NavPill },
 
   setup() {
     const route = useRoute();
-    const { loadSpot, scenicSpot } = getScenicSpot();
+    const { loadSpot, scenicSpot } = getScenicSpot(route.params.city);
+    loadSpot(route.params.city);
 
     onBeforeRouteUpdate(async (to, from, next) => {
       loadSpot(to.params.city);

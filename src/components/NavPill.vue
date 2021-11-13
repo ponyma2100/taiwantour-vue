@@ -7,35 +7,35 @@
           <img src="../assets/north.png" alt="northern" />
         </div>
         <p>北部</p>
-        <div class="active"></div>
+        <div class="active" v-show="isShowNorthern"></div>
       </li>
       <li class="nav-item" @click="toggleShowCentral">
         <div class="circle">
           <img src="../assets/north.png" alt="central" />
         </div>
         <p>中部</p>
-        <div class="active"></div>
+        <div class="active" v-show="isShowCentral"></div>
       </li>
       <li class="nav-item" @click="toggleShowSouthern">
         <div class="circle">
           <img src="../assets/north.png" alt="southern" />
         </div>
         <p>南部</p>
-        <div class="active"></div>
+        <div class="active" v-show="isShowSouthern"></div>
       </li>
       <li class="nav-item" @click="toggleShowEastern">
         <div class="circle">
           <img src="../assets/north.png" alt="north" />
         </div>
         <p>東部</p>
-        <div class="active"></div>
+        <div class="active" v-show="isShowEastern"></div>
       </li>
       <li class="nav-item" @click="toggleShowOffshore">
         <div class="circle">
           <img src="../assets/north.png" alt="offshore" />
         </div>
         <p>離島</p>
-        <div class="active"></div>
+        <div class="active" v-show="isShowOffshore"></div>
       </li>
     </ul>
 

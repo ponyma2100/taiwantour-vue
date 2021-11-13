@@ -1,48 +1,10 @@
 <template>
-  <div class="spot-container-top">
-    <div v-for="spot in scenicSpot.slice(0, 3)" :key="spot.ID">
-      <div class="spot">
-        <div class="spot-img">
-          <img
-            :src="spot.Picture.PictureUrl1"
-            :alt="spot.Picture.PictureDescription1"
-          />
-        </div>
-        <div class="spot-description">
-          <div class="spot-name">
-            {{ spot.Name }}
-          </div>
-          <div class="spot-address">
-            {{ spot.Address }}
-          </div>
-        </div>
-        <div class="spot-tag">
-          <div v-if="spot.Class1" class="spot-tag1">
-            {{ spot.Class1 }}
-          </div>
-          <div v-if="spot.Class2" class="spot-tag2">
-            {{ spot.Class2 }}
-          </div>
-          <div v-if="spot.Class3" class="spot-tag3">
-            {{ spot.Class3 }}
-          </div>
-          <div class="spot-city">
-            {{ spot.Address.substring(0, 3) }}
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="info">
-      <div class="info-text">
-        <h1>多久沒有</h1>
-        <h1>出門走走了呢？</h1>
-        <h4>Let’s get out</h4>
-      </div>
-      <button>更多FUNNY</button>
-    </div>
+  <div class="title">
+    <p class="title-city">{{ $route.params.city }}</p>
+    <p>景點介紹</p>
   </div>
-  <div class="spot-container-bottom">
-    <div v-for="spot in scenicSpot.slice(3, 6)" :key="spot.ID">
+  <div class="spot-container-top">
+    <div v-for="spot in scenicSpot" :key="spot.ID">
       <div class="spot">
         <div class="spot-img">
           <img
@@ -54,22 +16,11 @@
           <div class="spot-name">
             {{ spot.Name }}
           </div>
+          <div class="spot-detail">
+            {{ spot.Description.substring(0, 50) + "..." }}
+          </div>
           <div class="spot-address">
             {{ spot.Address }}
-          </div>
-        </div>
-        <div class="spot-tag">
-          <div v-if="spot.Class1" class="spot-tag1">
-            {{ spot.Class1 }}
-          </div>
-          <div v-if="spot.Class2" class="spot-tag2">
-            {{ spot.Class2 }}
-          </div>
-          <div v-if="spot.Class3" class="spot-tag3">
-            {{ spot.Class3 }}
-          </div>
-          <div class="spot-city" v-if="spot.Address">
-            {{ spot.Address.substring(0, 3) }}
           </div>
         </div>
       </div>
@@ -78,9 +29,13 @@
 </template>
 
 <script>
+import { useRoute } from "vue-router";
+
 export default {
   props: ["scenicSpot"],
-  setup(props) {},
+  setup(props) {
+    const route = useRoute();
+  },
 };
 </script>
 
@@ -89,13 +44,10 @@ export default {
 .spot-container-bottom {
   display: flex;
   align-items: center;
-  padding: 15px 100px;
-  overflow: hidden;
+  overflow: scroll;
   height: 400px;
 }
-/* .spot-container-top {
-  justify-content: space-evenly;
-} */
+
 .spot-container-bottom {
   margin-left: 80px;
 }
@@ -177,5 +129,16 @@ export default {
 }
 .info h4 {
   color: #9a9a9a;
+}
+.title {
+  display: flex;
+  padding: 20px 30px;
+}
+.title p {
+  font-size: 26px;
+  font-weight: bold;
+}
+.title-city {
+  color: #1eb893;
 }
 </style>

@@ -10,6 +10,15 @@
   --btnprimary: linear-gradient(167.01deg, #78E389 -18.85%, #1EB893 92.39%);
 }
 
+/* scrollbar width */
+::-webkit-scrollbar {
+  width: 1px;
+  height: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 /* base styles  */
 * {
   margin: 0;

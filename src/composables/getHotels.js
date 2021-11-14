@@ -4,9 +4,9 @@ const getHotels = () => {
 
   const hotels = ref([])
 
-  const loadHotels = async (city) => {
+  const loadHotels = async (city, num = 10) => {
     const url = 'https://ptx.transportdata.tw/MOTC/v2/Tourism/Hotel/'
-    const queryNum = '10'
+    const queryNum = num
     const queryCity = city ? city : ''
 
     try {

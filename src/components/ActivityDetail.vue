@@ -18,7 +18,7 @@
           <div class="activity-name">
             {{ activity.Name }}
           </div>
-          <div class="activity-address">
+          <div class="activity-address" v-if="activity.Address">
             {{ activity.Address.substring(0, 20) }}
           </div>
         </div>
@@ -29,8 +29,8 @@
           <div v-if="activity.Class2" class="activity-tag2">
             {{ activity.Class2 }}
           </div>
-          <div class="activity-city">
-            {{ activity.Address.substring(0, 3) }}
+          <div class="activity-city" v-if="activity.City">
+            {{ activity.City }}
           </div>
         </div>
       </div>
@@ -136,12 +136,10 @@ export default {
 .title {
   display: flex;
   padding: 20px 30px;
+  align-items: self-end;
 }
 .title p {
   font-size: 26px;
   font-weight: bold;
-}
-.title-city {
-  color: #1eb893;
 }
 </style>

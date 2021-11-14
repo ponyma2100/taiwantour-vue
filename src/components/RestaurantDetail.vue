@@ -103,14 +103,13 @@ export default {
 .title {
   display: flex;
   padding: 20px 30px;
+  align-items: self-end;
 }
 .title p {
   font-size: 26px;
   font-weight: bold;
 }
-.title-city {
-  color: #1eb893;
-}
+
 .restaurant {
   justify-content: flex-end;
   height: 335px;

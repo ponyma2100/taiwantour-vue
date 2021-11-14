@@ -4,9 +4,9 @@ const getActivities = () => {
 
   const activities = ref([])
 
-  const loadActivities = async (city) => {
+  const loadActivities = async (city, num = 10) => {
     const url = 'https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/'
-    const queryNum = '10'
+    const queryNum = num
     const queryCity = city ? city : ''
 
     try {

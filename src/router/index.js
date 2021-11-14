@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Overview from '../views/Overview.vue'
+import Activity from '../views/Activity'
 
 const routes = [
   {
@@ -12,6 +13,12 @@ const routes = [
     path: '/overview/:city',
     name: 'Overview',
     component: Overview,
+    props: true
+  },
+  {
+    path: '/activity/:city',
+    name: 'Activity',
+    component: Activity,
     props: true
   },
 ]

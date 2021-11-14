@@ -9,6 +9,7 @@
 <script>
 import getScenicSpot from "../composables/getScenicSpot";
 import getRestaurant from "../composables/getRestaurant";
+import getHotel from "../composables/getHotel";
 import Banner from "../components/Banner.vue";
 import ListView from "../components/ListView.vue";
 import NavPill from "../components/NavPill.vue";
@@ -20,11 +21,13 @@ export default {
   setup() {
     const { loadSpot, scenicSpot } = getScenicSpot();
     const { loadRestaurant, restaurant } = getRestaurant();
+    const { loadHotel, hotel } = getHotel();
 
     loadSpot();
     loadRestaurant();
+    loadHotel();
 
-    return { scenicSpot, restaurant };
+    return { scenicSpot, restaurant, hotel };
   },
 };
 </script>

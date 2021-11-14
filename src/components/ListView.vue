@@ -1,6 +1,6 @@
 <template>
   <div class="spot-container-top">
-    <div v-for="spot in scenicSpot.slice(0, 3)" :key="spot.ID">
+    <div v-for="spot in scenicSpots.slice(0, 3)" :key="spot.ID">
       <div class="spot">
         <div class="spot-img">
           <img
@@ -42,7 +42,7 @@
     </div>
   </div>
   <div class="spot-container-bottom">
-    <div v-for="spot in scenicSpot.slice(3, 6)" :key="spot.ID">
+    <div v-for="spot in scenicSpots.slice(3, 6)" :key="spot.ID">
       <div class="spot">
         <div class="spot-img">
           <img
@@ -110,7 +110,7 @@
 
 <script>
 export default {
-  props: ["scenicSpot", "restaurants"],
+  props: ["scenicSpots", "restaurants"],
   setup(props) {
     console.log("🚀 ~ file: ListView.vue ~ line 93 ~ setup ~ props", props);
   },

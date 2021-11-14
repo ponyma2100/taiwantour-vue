@@ -4,28 +4,28 @@ import { ref } from 'vue'
 // https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/Taipei?$top=10&$format=JSON
 
 
-const getScenicSpot = () => {
-  const scenicSpot = ref([])
+const getScenicSpots = () => {
+  const scenicSpots = ref([])
 
-  const loadSpot = async (city) => {
+  const loadSpots = async (city) => {
     const url = 'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/'
     const queryNum = '10'
     const queryCity = city ? city : ''
     try {
       const res = await fetch(`${url}${queryCity}?$top=${queryNum}&$format=JSON`)
       const data = await res.json()
-      scenicSpot.value = data
+      scenicSpots.value = data
 
     } catch (error) {
       console.log(error)
     }
-    return { scenicSpot }
+    return { scenicSpots }
   }
 
-  return { loadSpot, scenicSpot }
+  return { loadSpots, scenicSpots }
 }
 
 
-export default getScenicSpot
+export default getScenicSpots
 
 

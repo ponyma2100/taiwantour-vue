@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import getScenicSpot from "../composables/getScenicSpot";
+import getScenicSpots from "../composables/getScenicSpots";
 import Banner from "../components/Banner.vue";
 import CityDetail from "../components/cityDetail.vue";
 import NavPill from "../components/NavPill.vue";
@@ -18,15 +18,15 @@ export default {
 
   setup() {
     const route = useRoute();
-    const { loadSpot, scenicSpot } = getScenicSpot(route.params.city);
-    loadSpot(route.params.city);
+    const { loadSpots, scenicSpots } = getScenicSpots(route.params.city);
+    loadSpots(route.params.city);
 
     onBeforeRouteUpdate(async (to, from, next) => {
-      loadSpot(to.params.city);
+      loadSpots(to.params.city);
       next();
     });
 
-    return { scenicSpot };
+    return { scenicSpots };
   },
 };
 </script>

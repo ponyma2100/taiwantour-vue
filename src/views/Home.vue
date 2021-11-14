@@ -2,15 +2,15 @@
   <div class="home">
     <Banner />
     <NavPill />
-    <ListView :scenicSpot="scenicSpot" :restaurants="restaurants" />
+    <ListView :scenicSpots="scenicSpots" :restaurants="restaurants" />
   </div>
 </template>
 
 <script>
-import getScenicSpot from "../composables/getScenicSpot";
+import getScenicSpots from "../composables/getScenicSpots";
 import getRestaurants from "../composables/getRestaurants";
-import getHotel from "../composables/getHotel";
-import getActivity from "../composables/getActivity";
+import getHotels from "../composables/getHotels";
+import getActivities from "../composables/getActivities";
 import Banner from "../components/Banner.vue";
 import ListView from "../components/ListView.vue";
 import NavPill from "../components/NavPill.vue";
@@ -20,21 +20,21 @@ export default {
   components: { Banner, ListView, NavPill },
 
   setup() {
-    const { loadSpot, scenicSpot } = getScenicSpot();
+    const { loadSpots, scenicSpots } = getScenicSpots();
     const { loadRestaurants, restaurants } = getRestaurants();
-    const { loadHotel, hotel } = getHotel();
-    const { loadActivity, activity } = getActivity();
+    const { loadHotels, hotels } = getHotels();
+    const { loadActivities, activities } = getActivities();
 
-    loadSpot();
+    loadSpots();
     loadRestaurants();
+    loadHotels();
     console.log(
-      "🚀 ~ file: Home.vue ~ line 30 ~ setup ~ loadRestaurants()",
-      loadRestaurants()
+      "🚀 ~ file: Home.vue ~ line 31 ~ setup ~ loadHotels()",
+      loadHotels()
     );
-    loadHotel();
-    loadActivity();
+    loadActivities();
 
-    return { scenicSpot, restaurants, hotel, activity };
+    return { scenicSpots, restaurants, hotels, activities };
   },
 };
 </script>

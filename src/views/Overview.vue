@@ -2,7 +2,7 @@
   <div class="container">
     <Banner />
     <NavPill />
-    <CityDetail :scenicSpot="scenicSpot" />
+    <CityDetail :scenicSpots="scenicSpots" />
   </div>
 </template>
 

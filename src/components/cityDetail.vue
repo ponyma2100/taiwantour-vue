@@ -4,7 +4,7 @@
     <p>景點介紹</p>
   </div>
   <div class="spot-container-top">
-    <div v-for="spot in scenicSpot" :key="spot.ID">
+    <div v-for="spot in scenicSpots" :key="spot.ID">
       <div class="spot">
         <div class="spot-img">
           <img
@@ -17,7 +17,8 @@
             {{ spot.Name }}
           </div>
           <div class="spot-detail">
-            {{ spot.Description.substring(0, 50) + "..." }}
+            <!-- {{ spot.Description.substring(0, 50) + "..." }} -->
+            {{ spot.DescriptionDetail.substring(0, 50) + "..." }}
           </div>
           <div class="spot-address">
             {{ spot.Address }}
@@ -32,7 +33,7 @@
 import { useRoute } from "vue-router";
 
 export default {
-  props: ["scenicSpot"],
+  props: ["scenicSpots"],
   setup(props) {
     const route = useRoute();
   },

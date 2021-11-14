@@ -106,20 +106,50 @@
       </div>
     </div>
   </div>
+  <div class="hotel-container">
+    <div class="hotel" v-for="hotel in hotels" :key="hotel.ID">
+      <div class="hotel-img">
+        <img
+          :src="hotel.Picture.PictureUrl1"
+          :alt="hotel.Picture.PictureDescription1"
+        />
+      </div>
+      <div class="hotel-description">
+        <div class="hotel-name">
+          {{ hotel.Name }}
+        </div>
+        <div v-if="hotel.Class" class="hotel-tag">
+          {{ hotel.Class }}
+        </div>
+      </div>
+      <div class="hotel-info">
+        <div class="hotel-spec">
+          {{ hotel.Spec ? hotel.Spec.split(";", 1)[0] : "未提供價錢" }}
+        </div>
+        <span class="hotel-city">
+          {{ hotel.Address.substring(0, 3) }}
+        </span>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  props: ["scenicSpots", "restaurants"],
+  props: ["scenicSpots", "restaurants", "hotels"],
   setup(props) {
-    console.log("🚀 ~ file: ListView.vue ~ line 93 ~ setup ~ props", props);
+    console.log(
+      "🚀 ~ file: ListView.vue ~ line 93 ~ setup ~ props",
+      props.hotels
+    );
   },
 };
 </script>
 
 <style scoped>
 .spot-container-top,
-.spot-container-bottom {
+.spot-container-bottom,
+.hotel-container {
   display: flex;
   align-items: center;
   padding: 15px 100px;
@@ -130,15 +160,22 @@ export default {
   margin-left: 80px;
 }
 
-.restaurant-container {
+.restaurant-container,
+.hotel-container {
   display: flex;
   white-space: nowrap;
   overflow-x: scroll;
   padding: 15px 100px;
+  width: 80vw;
+}
+
+.restaurant-container {
   background-image: url("../assets/rest-bg.png");
 }
+
 .spot,
-.restaurant {
+.restaurant,
+.hotel {
   display: flex;
   flex-direction: column;
   width: 290px;
@@ -156,13 +193,15 @@ export default {
   background-size: cover;
 }
 
-.spot-description {
+.spot-description,
+.hotel-description {
   display: flex;
   flex-direction: column;
   padding: 10px;
 }
 
-.spot-img {
+.spot-img,
+.hotel-img {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -179,13 +218,15 @@ export default {
   color: #000000;
 }
 
-.spot-address {
+.spot-address,
+.hotel-tag {
   font-weight: 500;
   font-size: 12px;
   line-height: 17px;
   color: #a8a8a8;
 }
-.spot-tag {
+.spot-tag,
+.hotel-info {
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -208,7 +249,8 @@ export default {
   padding: 3px;
 }
 
-.spot-city {
+.spot-city,
+.hotel-city {
   font-size: 14px;
   line-height: 20px;
   color: #0085ff;

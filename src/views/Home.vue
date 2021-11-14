@@ -2,7 +2,11 @@
   <div class="home">
     <Banner />
     <NavPill />
-    <ListView :scenicSpots="scenicSpots" :restaurants="restaurants" />
+    <ListView
+      :scenicSpots="scenicSpots"
+      :restaurants="restaurants"
+      :hotels="hotels"
+    />
   </div>
 </template>
 
@@ -27,11 +31,7 @@ export default {
 
     loadSpots();
     loadRestaurants();
-    loadHotels();
-    console.log(
-      "🚀 ~ file: Home.vue ~ line 31 ~ setup ~ loadHotels()",
-      loadHotels()
-    );
+    loadHotels("Taipei");
     loadActivities();
 
     return { scenicSpots, restaurants, hotels, activities };

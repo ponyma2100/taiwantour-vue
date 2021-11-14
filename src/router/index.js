@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Overview from '../views/Overview.vue'
 import Activity from '../views/Activity'
 import Restaurant from '../views/Restaurant'
+import Hotel from '../views/Hotel'
 
 const routes = [
   {
@@ -26,6 +27,12 @@ const routes = [
     path: '/restaurant/:city',
     name: 'Restaurant',
     component: Restaurant,
+    props: true
+  },
+  {
+    path: '/hotel/:city',
+    name: 'Hotel',
+    component: Hotel,
     props: true
   },
 ]

@@ -13,7 +13,9 @@
         <router-link :to="{ name: 'Restaurant', params: { city: 'Taipei' } }"
           >美食饗宴</router-link
         >
-        <router-link :to="{ name: 'Home' }">精選住宿</router-link>
+        <router-link :to="{ name: 'Hotel', params: { city: 'Taipei' } }"
+          >精選住宿</router-link
+        >
       </div>
     </nav>
   </div>

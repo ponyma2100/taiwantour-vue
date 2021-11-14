@@ -10,7 +10,7 @@ import getHotels from "../composables/getHotels";
 import { useRoute } from "vue-router";
 
 export default {
-  components: { NavPill, RestaurantCard },
+  components: { NavPill, HotelCard },
 
   setup() {
     const route = useRoute();

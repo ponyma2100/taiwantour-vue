@@ -1,40 +1,36 @@
 <template>
-  <div class="card-restaurant">
+  <div class="card-hotel">
     <div class="title">
       <p class="title-city">{{ $route.params.city }}</p>
       <p class="title-num">
-        共有 <span>{{ restaurants.length }}</span> 個美食饗宴
+        共有 <span>{{ hotels.length }}</span> 個熱門住宿
       </p>
     </div>
-    <div class="restaurant-container">
-      <div
-        class="restaurant"
-        v-for="restaurant in restaurants"
-        :key="restaurant.ID"
-      >
-        <div class="restaurant-img">
+    <div class="hotel-container">
+      <div class="hotel" v-for="hotel in hotels" :key="hotel.ID">
+        <div class="hotel-img">
           <img
-            :src="restaurant.Picture.PictureUrl1"
-            :alt="restaurant.Picture.PictureDescription1"
+            :src="hotel.Picture.PictureUrl1"
+            :alt="hotel.Picture.PictureDescription1"
           />
         </div>
-        <div class="restaurant-description">
-          <div class="restaurant-name">
-            {{ restaurant.Name }}
+        <div class="hotel-description">
+          <div class="hotel-name">
+            {{ hotel.Name }}
           </div>
-          <div class="restaurant-address" v-if="restaurant.Address">
-            {{ restaurant.Address.substring(0, 20) }}
+          <div class="hotel-address" v-if="hotel.Address">
+            {{ hotel.Address.substring(0, 20) }}
           </div>
         </div>
-        <div class="restaurant-tag">
-          <div v-if="restaurant.Class1" class="restaurant-tag1">
-            {{ restaurant.Class1 }}
+        <div class="hotel-tag">
+          <div v-if="hotel.Class1" class="hotel-tag1">
+            {{ hotel.Class1 }}
           </div>
-          <div v-if="restaurant.Class2" class="restaurant-tag2">
-            {{ restaurant.Class2 }}
+          <div v-if="hotel.Class2" class="hotel-tag2">
+            {{ hotel.Class2 }}
           </div>
-          <div class="restaurant-city" v-if="restaurant.City">
-            {{ restaurant.City }}
+          <div class="hotel-city" v-if="hotel.City">
+            {{ hotel.City }}
           </div>
         </div>
       </div>
@@ -44,19 +40,19 @@
 
 <script>
 export default {
-  props: ["restaurants"],
+  props: ["hotels"],
   setup(props) {},
 };
 </script>
 
 <style scoped>
-.restaurant-container {
+.hotel-container {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   overflow-x: scroll;
 }
-.restaurant {
+.hotel {
   display: flex;
   flex-direction: column;
   width: 290px;
@@ -67,13 +63,13 @@ export default {
   margin: 10px 30px;
 }
 
-.restaurant-description {
+.hotel-description {
   display: flex;
   flex-direction: column;
   padding: 10px;
 }
 
-.restaurant-img {
+.hotel-img {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,20 +79,20 @@ export default {
   background: #c4c4c4;
   border-radius: 10px 10px 0px 0px;
 }
-.restaurant-name {
+.hotel-name {
   font-weight: bold;
   font-size: 16px;
   line-height: 23px;
   color: #000000;
 }
 
-.restaurant-address {
+.hotel-address {
   font-weight: 500;
   font-size: 12px;
   line-height: 17px;
   color: #a8a8a8;
 }
-.restaurant-tag {
+.hotel-tag {
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -104,9 +100,9 @@ export default {
   align-items: center;
 }
 
-.restaurant-tag1,
-.restaurant-tag2,
-.restaurant-tag3 {
+.hotel-tag1,
+.hotel-tag2,
+.hotel-tag3 {
   background: #ededed;
   border-radius: 11px;
   display: flex;
@@ -120,7 +116,7 @@ export default {
   padding: 3px;
 }
 
-.restaurant-city {
+.hotel-city {
   font-size: 14px;
   line-height: 20px;
   color: #0085ff;

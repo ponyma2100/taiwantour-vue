@@ -35,6 +35,9 @@ export default {};
   width: 100%;
   height: 4.25rem;
   border: 1px solid black;
+  background: #f6f6f6;
+  position: fixed;
+  top: 0;
 }
 nav {
   display: flex;

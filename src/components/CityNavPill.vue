@@ -117,7 +117,6 @@ export default {
     const route = useRoute();
     const routerName = ref();
     routerName.value = route.name;
-    console.log("route.value", routerName.value);
 
     const toggleShowNorthern = () => {
       isShowNorthern.value = !isShowNorthern.value;

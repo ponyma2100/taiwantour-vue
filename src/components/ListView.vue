@@ -38,7 +38,9 @@
         <h1>出門走走了呢？</h1>
         <h4>Let’s get out</h4>
       </div>
-      <button>更多FUNNY</button>
+      <router-link :to="{ name: 'ScenicSpot', params: { city: 'Taipei' } }"
+        ><button>更多FUNNY</button></router-link
+      >
     </div>
   </div>
   <div class="spot-container-bottom">
@@ -81,7 +83,9 @@
         <h1>餐飲美食</h1>
         <h4>TASTY</h4>
       </div>
-      <button>更多美味</button>
+      <router-link :to="{ name: 'Restaurant', params: { city: 'Taipei' } }"
+        ><button>更多美味</button></router-link
+      >
     </div>
     <div
       v-for="restaurant in restaurants"
@@ -137,7 +141,9 @@
     </div>
   </div>
   <div class="hotel-info-bottom">
-    <button>更多住宿</button>
+    <router-link :to="{ name: 'Hotel', params: { city: 'Taipei' } }"
+      ><button>更多住宿</button></router-link
+    >
   </div>
 </template>
 

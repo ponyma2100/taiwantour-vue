@@ -46,6 +46,9 @@ export default {
 </script>
 
 <style scoped>
+.card-hotel {
+  padding-left: 20px;
+}
 .hotel-container {
   display: flex;
   align-items: center;
@@ -55,7 +58,7 @@ export default {
 .hotel {
   display: flex;
   flex-direction: column;
-  width: 290px;
+  width: 260px;
   height: 349px;
   background: #ffffff;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
@@ -74,7 +77,7 @@ export default {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  width: 290px;
+  width: 260px;
   height: 243px;
   background: #c4c4c4;
   border-radius: 10px 10px 0px 0px;

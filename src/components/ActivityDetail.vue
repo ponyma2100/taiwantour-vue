@@ -7,32 +7,30 @@
       <p>特色活動</p>
     </div>
     <div class="activity-container">
-      <div v-for="activity in activities" :key="activity.ID">
-        <div class="activity">
-          <div class="activity-img">
-            <img
-              :src="activity.Picture.PictureUrl1"
-              :alt="activity.Picture.PictureDescription1"
-            />
+      <div class="activity" v-for="activity in activities" :key="activity.ID">
+        <div class="activity-img">
+          <img
+            :src="activity.Picture.PictureUrl1"
+            :alt="activity.Picture.PictureDescription1"
+          />
+        </div>
+        <div class="activity-description">
+          <div class="activity-name">
+            {{ activity.Name }}
           </div>
-          <div class="activity-description">
-            <div class="activity-name">
-              {{ activity.Name }}
-            </div>
-            <div class="activity-address">
-              {{ activity.Address.substring(0, 20) }}
-            </div>
+          <div class="activity-address">
+            {{ activity.Address.substring(0, 20) }}
           </div>
-          <div class="activity-tag">
-            <div v-if="activity.Class1" class="activity-tag1">
-              {{ activity.Class1 }}
-            </div>
-            <div v-if="activity.Class2" class="activity-tag2">
-              {{ activity.Class2 }}
-            </div>
-            <div class="activity-city">
-              {{ activity.Address.substring(0, 3) }}
-            </div>
+        </div>
+        <div class="activity-tag">
+          <div v-if="activity.Class1" class="activity-tag1">
+            {{ activity.Class1 }}
+          </div>
+          <div v-if="activity.Class2" class="activity-tag2">
+            {{ activity.Class2 }}
+          </div>
+          <div class="activity-city">
+            {{ activity.Address.substring(0, 3) }}
           </div>
         </div>
       </div>
@@ -43,12 +41,7 @@
 <script>
 export default {
   props: ["activities"],
-  setup(props) {
-    console.log(
-      "🚀 ~ file: activityDetail.vue ~ line 40 ~ setup ~ props",
-      props
-    );
-  },
+  setup(props) {},
 };
 </script>
 

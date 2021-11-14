@@ -106,6 +106,10 @@
       </div>
     </div>
   </div>
+  <div class="hotel-info-header">
+    <h1>精選住宿</h1>
+    <h4>accommodation</h4>
+  </div>
   <div class="hotel-container">
     <div class="hotel" v-for="hotel in hotels" :key="hotel.ID">
       <div class="hotel-img">
@@ -131,6 +135,9 @@
         </span>
       </div>
     </div>
+  </div>
+  <div class="hotel-info-bottom">
+    <button>更多住宿</button>
   </div>
 </template>
 
@@ -263,6 +270,7 @@ export default {
   /* height: 60%; */
   padding-left: 20px;
 }
+.hotel-info-header h4,
 .info h4 {
   color: #9a9a9a;
 }
@@ -295,5 +303,13 @@ export default {
 .mask {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 0 0 10px 10px;
+}
+
+.hotel-info-header,
+.hotel-info-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
 }
 </style>

@@ -1,10 +1,13 @@
 {
   "name": "taiwan-tour-vue",
+  "homepage": "https://ponyma2100.github.io/taiwantour-vue",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "core-js": "^3.6.5",

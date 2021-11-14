@@ -4,9 +4,9 @@ const getRestaurants = () => {
 
   const restaurants = ref([])
 
-  const loadRestaurants = async (city) => {
+  const loadRestaurants = async (city, num = 10) => {
     const url = 'https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant/'
-    const queryNum = '10'
+    const queryNum = num
     const queryCity = city ? city : ''
 
     try {

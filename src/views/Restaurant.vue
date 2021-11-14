@@ -5,12 +5,12 @@
 
 <script>
 import NavPill from "../components/NavPill.vue";
-import RestaurantCard from "../components/RestaurantyCard.vue";
+import RestaurantCard from "../components/RestaurantCard.vue";
 import getRestaurants from "../composables/getRestaurants";
 import { useRoute } from "vue-router";
 
 export default {
-  components: { NavPill, ActivityCard },
+  components: { NavPill, RestaurantCard },
 
   setup() {
     const route = useRoute();

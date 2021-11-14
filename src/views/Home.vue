@@ -2,13 +2,13 @@
   <div class="home">
     <Banner />
     <NavPill />
-    <ListView :scenicSpot="scenicSpot" />
+    <ListView :scenicSpot="scenicSpot" :restaurants="restaurants" />
   </div>
 </template>
 
 <script>
 import getScenicSpot from "../composables/getScenicSpot";
-import getRestaurant from "../composables/getRestaurant";
+import getRestaurants from "../composables/getRestaurants";
 import getHotel from "../composables/getHotel";
 import getActivity from "../composables/getActivity";
 import Banner from "../components/Banner.vue";
@@ -21,16 +21,20 @@ export default {
 
   setup() {
     const { loadSpot, scenicSpot } = getScenicSpot();
-    const { loadRestaurant, restaurant } = getRestaurant();
+    const { loadRestaurants, restaurants } = getRestaurants();
     const { loadHotel, hotel } = getHotel();
     const { loadActivity, activity } = getActivity();
 
     loadSpot();
-    loadRestaurant();
+    loadRestaurants();
+    console.log(
+      "🚀 ~ file: Home.vue ~ line 30 ~ setup ~ loadRestaurants()",
+      loadRestaurants()
+    );
     loadHotel();
     loadActivity();
 
-    return { scenicSpot, restaurant, hotel, activity };
+    return { scenicSpot, restaurants, hotel, activity };
   },
 };
 </script>

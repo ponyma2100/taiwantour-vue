@@ -75,12 +75,45 @@
       </div>
     </div>
   </div>
+  <div class="restaurant-container">
+    <div class="info">
+      <div class="info-text">
+        <h1>餐飲美食</h1>
+        <h4>TASTY</h4>
+      </div>
+      <button>更多美味</button>
+    </div>
+    <div
+      v-for="restaurant in restaurants"
+      :key="restaurant.ID"
+      class="restaurant"
+      :style="{
+        'background-image': `url('${restaurant.Picture.PictureUrl1}')`,
+      }"
+    >
+      <div class="mask">
+        <div class="restaurant-description">
+          <div class="restaurant-name">
+            {{ restaurant.Name }}
+          </div>
+          <div class="restaurant-detail">
+            <span class="restaurant-tag">{{ restaurant.Class }}</span>
+            <span class="restaurant-city">{{
+              restaurant.Address.substring(0, 3)
+            }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  props: ["scenicSpot"],
-  setup(props) {},
+  props: ["scenicSpot", "restaurants"],
+  setup(props) {
+    console.log("🚀 ~ file: ListView.vue ~ line 93 ~ setup ~ props", props);
+  },
 };
 </script>
 
@@ -93,13 +126,19 @@ export default {
   overflow: hidden;
   height: 400px;
 }
-/* .spot-container-top {
-  justify-content: space-evenly;
-} */
 .spot-container-bottom {
   margin-left: 80px;
 }
-.spot {
+
+.restaurant-container {
+  display: flex;
+  white-space: nowrap;
+  overflow-x: scroll;
+  padding: 15px 100px;
+  background-image: url("../assets/rest-bg.png");
+}
+.spot,
+.restaurant {
   display: flex;
   flex-direction: column;
   width: 290px;
@@ -108,6 +147,13 @@ export default {
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
   border-radius: 10px;
   margin: 10px 30px;
+}
+
+.restaurant {
+  justify-content: flex-end;
+  width: 250px;
+  height: 335px;
+  background-size: cover;
 }
 
 .spot-description {
@@ -172,10 +218,40 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 60%;
+  /* height: 60%; */
   padding-left: 20px;
 }
 .info h4 {
   color: #9a9a9a;
+}
+
+.restaurant-description {
+  width: 250px;
+  margin: 10px 10px;
+}
+.restaurant-name,
+.restaurant-detail > span {
+  font-weight: bold;
+  line-height: 23px;
+  color: #ffffff;
+}
+
+.restaurant-detail {
+  display: flex;
+  justify-content: space-between;
+  width: 235px;
+}
+.restaurant-city {
+  display: flex;
+  align-items: center;
+  width: 52px;
+  height: 26px;
+  background: #0e0e0e;
+  border-radius: 10.5px;
+}
+
+.mask {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 0 0 10px 10px;
 }
 </style>

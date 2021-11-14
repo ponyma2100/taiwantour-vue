@@ -1,10 +1,10 @@
 import { ref } from 'vue'
 
-const getRestaurant = () => {
+const getRestaurants = () => {
 
-  const restaurant = ref([])
+  const restaurants = ref([])
 
-  const loadRestaurant = async (city) => {
+  const loadRestaurants = async (city) => {
     const url = 'https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant/'
     const queryNum = '10'
     const queryCity = city ? city : ''
@@ -12,16 +12,16 @@ const getRestaurant = () => {
     try {
       const res = await fetch(`${url}${queryCity}?$top=${queryNum}&$format=JSON`)
       const data = await res.json()
-      restaurant.value = data
+      restaurants.value = data
 
     } catch (error) {
       console.log(error)
     }
-    return { restaurant }
+    return { restaurants }
 
   }
 
-  return { loadRestaurant, restaurant }
+  return { loadRestaurants, restaurants }
 }
 
-export default getRestaurant
+export default getRestaurants

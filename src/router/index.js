@@ -4,6 +4,7 @@ import Overview from '../views/Overview.vue'
 import Activity from '../views/Activity'
 import Restaurant from '../views/Restaurant'
 import Hotel from '../views/Hotel'
+import ScenicSpot from '../views/ScenicSpot'
 
 const routes = [
   {
@@ -33,6 +34,12 @@ const routes = [
     path: '/hotel/:city',
     name: 'Hotel',
     component: Hotel,
+    props: true
+  },
+  {
+    path: '/scenicSpot/:city',
+    name: 'ScenicSpot',
+    component: ScenicSpot,
     props: true
   },
 ]

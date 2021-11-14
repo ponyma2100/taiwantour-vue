@@ -7,6 +7,9 @@
         </router-link>
       </div>
       <div class="links">
+        <router-link :to="{ name: 'ScenicSpot', params: { city: 'Taipei' } }"
+          >熱門景點</router-link
+        >
         <router-link :to="{ name: 'Activity', params: { city: 'Taipei' } }"
           >特色活動</router-link
         >

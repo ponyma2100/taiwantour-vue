@@ -7,9 +7,9 @@ import { ref } from 'vue'
 const getScenicSpots = () => {
   const scenicSpots = ref([])
 
-  const loadSpots = async (city) => {
+  const loadSpots = async (city, num = 10) => {
     const url = 'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/'
-    const queryNum = '10'
+    const queryNum = num
     const queryCity = city ? city : ''
     try {
       const res = await fetch(`${url}${queryCity}?$top=${queryNum}&$format=JSON`)

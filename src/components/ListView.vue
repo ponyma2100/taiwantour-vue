@@ -44,7 +44,7 @@
     </div>
   </div>
   <div class="spot-container-bottom">
-    <div v-for="spot in scenicSpots.slice(3, 6)" :key="spot.ID">
+    <div v-for="spot in scenicSpots.slice(6, 10)" :key="spot.ID">
       <div class="spot">
         <div class="spot-img">
           <img
@@ -150,12 +150,7 @@
 <script>
 export default {
   props: ["scenicSpots", "restaurants", "hotels"],
-  setup(props) {
-    console.log(
-      "🚀 ~ file: ListView.vue ~ line 93 ~ setup ~ props",
-      props.hotels
-    );
-  },
+  setup(props) {},
 };
 </script>
 
@@ -165,9 +160,13 @@ export default {
 .hotel-container {
   display: flex;
   align-items: center;
-  padding: 15px 100px;
+  padding: 15px 120px;
   overflow: hidden;
   height: 400px;
+}
+.spot-container-top,
+.spot-container-bottom {
+  justify-content: space-around;
 }
 .spot-container-bottom {
   margin-left: 80px;
@@ -221,7 +220,7 @@ export default {
   overflow: hidden;
   width: 290px;
   height: 243px;
-  background: #c4c4c4;
+  background: url("../assets/noimg.png") #c4c4c4;
   border-radius: 10px 10px 0px 0px;
 }
 .spot-name {

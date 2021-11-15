@@ -77,7 +77,7 @@ export default {
   overflow: hidden;
   width: 290px;
   height: 243px;
-  background: #c4c4c4;
+  background: url("../assets/noimg.png") #c4c4c4;
   border-radius: 10px 10px 0px 0px;
 }
 .activity-name {

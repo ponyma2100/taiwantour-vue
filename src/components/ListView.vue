@@ -77,6 +77,7 @@
       </div>
     </div>
   </div>
+
   <div class="restaurant-container">
     <div class="info">
       <div class="info-text">
@@ -87,58 +88,64 @@
         ><button>更多美味</button></router-link
       >
     </div>
-    <div
-      v-for="restaurant in restaurants"
-      :key="restaurant.ID"
-      class="restaurant"
-      :style="{
-        'background-image': `url('${restaurant.Picture.PictureUrl1}')`,
-      }"
-    >
-      <div class="mask">
-        <div class="restaurant-description">
-          <div class="restaurant-name">
-            {{ restaurant.Name }}
-          </div>
-          <div class="restaurant-detail">
-            <span class="restaurant-tag">{{ restaurant.Class }}</span>
-            <span class="restaurant-city">{{
-              restaurant.Address.substring(0, 3)
-            }}</span>
+    <vue-horizontal class="restaurant-carousel">
+      <section v-for="restaurant in restaurants" :key="restaurant.ID">
+        <div
+          class="restaurant"
+          :style="{
+            'background-image': `url('${restaurant.Picture.PictureUrl1}')`,
+          }"
+        >
+          <div class="mask">
+            <div class="restaurant-description">
+              <div class="restaurant-name">
+                {{ restaurant.Name }}
+              </div>
+              <div class="restaurant-detail">
+                <span class="restaurant-tag">{{ restaurant.Class }}</span>
+                <span class="restaurant-city">{{
+                  restaurant.Address.substring(0, 3)
+                }}</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </vue-horizontal>
   </div>
+
   <div class="hotel-info-header">
     <h1>精選住宿</h1>
     <h4>accommodation</h4>
   </div>
+
   <div class="hotel-container">
-    <div class="hotel" v-for="hotel in hotels" :key="hotel.ID">
-      <div class="hotel-img">
-        <img
-          :src="hotel.Picture.PictureUrl1"
-          :alt="hotel.Picture.PictureDescription1"
-        />
-      </div>
-      <div class="hotel-description">
-        <div class="hotel-name">
-          {{ hotel.Name }}
+    <vue-horizontal>
+      <section class="hotel" v-for="hotel in hotels" :key="hotel.ID">
+        <div class="hotel-img">
+          <img
+            :src="hotel.Picture.PictureUrl1"
+            :alt="hotel.Picture.PictureDescription1"
+          />
         </div>
-        <div v-if="hotel.Class" class="hotel-tag">
-          {{ hotel.Class }}
+        <div class="hotel-description">
+          <div class="hotel-name">
+            {{ hotel.Name }}
+          </div>
+          <div v-if="hotel.Class" class="hotel-tag">
+            {{ hotel.Class }}
+          </div>
         </div>
-      </div>
-      <div class="hotel-info">
-        <div class="hotel-spec">
-          {{ hotel.Spec ? hotel.Spec.split(";", 1)[0] : "未提供價錢" }}
+        <div class="hotel-info">
+          <div class="hotel-spec">
+            {{ hotel.Spec ? hotel.Spec.split(";", 1)[0] : "未提供價錢" }}
+          </div>
+          <span class="hotel-city">
+            {{ hotel.Address.substring(0, 3) }}
+          </span>
         </div>
-        <span class="hotel-city">
-          {{ hotel.Address.substring(0, 3) }}
-        </span>
-      </div>
-    </div>
+      </section>
+    </vue-horizontal>
   </div>
   <div class="hotel-info-bottom">
     <router-link :to="{ name: 'Hotel', params: { city: 'Taipei' } }"
@@ -148,21 +155,35 @@
 </template>
 
 <script>
+import { ref } from "@vue/reactivity";
+import VueHorizontal from "vue-horizontal";
 export default {
+  components: { VueHorizontal },
+
   props: ["scenicSpots", "restaurants", "hotels"],
-  setup(props) {},
+
+  setup(props) {
+    const items = ref([]);
+    items.value = [...Array(5).keys()].map((i) => {
+      return { i, title: `v-for: ${i}`, content: `🚀 Paragraph ${i}` };
+    });
+
+    return { items };
+  },
 };
 </script>
 
 <style scoped>
 .spot-container-top,
-.spot-container-bottom,
-.hotel-container {
+.spot-container-bottom {
   display: flex;
   align-items: center;
   padding: 15px 120px;
   overflow: hidden;
   height: 400px;
+}
+.hotel-container {
+  padding: 15px 120px;
 }
 .spot-container-top,
 .spot-container-bottom {
@@ -170,19 +191,6 @@ export default {
 }
 .spot-container-bottom {
   margin-left: 80px;
-}
-
-.restaurant-container,
-.hotel-container {
-  display: flex;
-  white-space: nowrap;
-  overflow-x: scroll;
-  padding: 15px 100px;
-  width: 80vw;
-}
-
-.restaurant-container {
-  background-image: url("../assets/rest-bg.png");
 }
 
 .spot,
@@ -196,6 +204,18 @@ export default {
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
   border-radius: 10px;
   margin: 10px 30px;
+}
+
+.restaurant-container {
+  display: flex;
+  padding: 15px;
+  padding-left: 100px;
+  background-image: url("../assets/rest-bg.png");
+}
+
+.restaurant-carousel {
+  width: 70vw;
+  margin-left: 200px;
 }
 
 .restaurant {
@@ -273,7 +293,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* height: 60%; */
   padding-left: 20px;
 }
 .hotel-info-header h4,
@@ -317,5 +336,10 @@ export default {
   flex-direction: column;
   align-items: center;
   padding-top: 30px;
+}
+.item {
+  background: #f3f3f3;
+  padding: 16px 24px;
+  margin-right: 24px;
 }
 </style>

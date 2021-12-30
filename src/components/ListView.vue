@@ -10,7 +10,7 @@
         </div>
         <div class="spot-description">
           <div class="spot-name">
-            {{ spot.Name }}
+            {{ spot.ScenicSpotName }}
           </div>
           <div class="spot-address">
             {{ spot.Address }}
@@ -54,7 +54,7 @@
         </div>
         <div class="spot-description">
           <div class="spot-name">
-            {{ spot.Name }}
+            {{ spot.ScenicSpotName }}
           </div>
           <div class="spot-address">
             {{ spot.Address }}
@@ -99,7 +99,7 @@
           <div class="mask">
             <div class="restaurant-description">
               <div class="restaurant-name">
-                {{ restaurant.Name }}
+                {{ restaurant.RestaurantName }}
               </div>
               <div class="restaurant-detail">
                 <span class="restaurant-tag">{{ restaurant.Class }}</span>
@@ -130,7 +130,7 @@
         </div>
         <div class="hotel-description">
           <div class="hotel-name">
-            {{ hotel.Name }}
+            {{ hotel.HotelName }}
           </div>
           <div v-if="hotel.Class" class="hotel-tag">
             {{ hotel.Class }}
@@ -161,15 +161,6 @@ export default {
   components: { VueHorizontal },
 
   props: ["scenicSpots", "restaurants", "hotels"],
-
-  setup(props) {
-    const items = ref([]);
-    items.value = [...Array(5).keys()].map((i) => {
-      return { i, title: `v-for: ${i}`, content: `🚀 Paragraph ${i}` };
-    });
-
-    return { items };
-  },
 };
 </script>
 

@@ -38,6 +38,7 @@ export default {};
   background: #f6f6f6;
   position: fixed;
   top: 0;
+  z-index: 999;
 }
 nav {
   display: flex;

@@ -16,7 +16,7 @@
         </div>
         <div class="hotel-description">
           <div class="hotel-name">
-            {{ hotel.Name }}
+            {{ hotel.HotelName }}
           </div>
           <div v-if="hotel.Class" class="hotel-tag">
             {{ hotel.Class }}

@@ -7,7 +7,11 @@
       </p>
     </div>
     <div class="activity-container">
-      <div class="activity" v-for="activity in activities" :key="activity.ID">
+      <div
+        class="activity"
+        v-for="activity in activities"
+        :key="activity.ActivityID"
+      >
         <div class="activity-img">
           <img
             :src="activity.Picture.PictureUrl1"
@@ -16,7 +20,7 @@
         </div>
         <div class="activity-description">
           <div class="activity-name">
-            {{ activity.Name }}
+            {{ activity.ActivityName }}
           </div>
           <div class="activity-address" v-if="activity.Address">
             {{ activity.Address.substring(0, 20) }}

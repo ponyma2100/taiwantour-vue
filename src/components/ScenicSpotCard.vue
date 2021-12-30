@@ -10,7 +10,7 @@
       <div
         class="scenicSpot"
         v-for="scenicSpot in scenicSpots"
-        :key="scenicSpot.ID"
+        :key="scenicSpot.ScenicSpotID"
       >
         <div class="scenicSpot-img">
           <img
@@ -20,7 +20,7 @@
         </div>
         <div class="scenicSpot-description">
           <div class="scenicSpot-name">
-            {{ scenicSpot.Name }}
+            {{ scenicSpot.ScenicSpotName }}
           </div>
           <div class="scenicSpot-address" v-if="scenicSpot.Address">
             {{ scenicSpot.Address.substring(0, 20) }}

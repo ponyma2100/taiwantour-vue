@@ -16,18 +16,15 @@
         </div>
         <div class="hotel-description">
           <div class="hotel-name">
-            {{ hotel.Name }}
+            {{ hotel.HotelName }}
           </div>
           <div class="hotel-address" v-if="hotel.Address">
             {{ hotel.Address.substring(0, 20) }}
           </div>
         </div>
         <div class="hotel-tag">
-          <div v-if="hotel.Class1" class="hotel-tag1">
-            {{ hotel.Class1 }}
-          </div>
-          <div v-if="hotel.Class2" class="hotel-tag2">
-            {{ hotel.Class2 }}
+          <div v-if="hotel.Class" class="hotel-tag1">
+            {{ hotel.Class }}
           </div>
           <div class="hotel-city" v-if="hotel.City">
             {{ hotel.City }}

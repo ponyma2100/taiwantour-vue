@@ -10,7 +10,7 @@
       <div
         class="restaurant"
         v-for="restaurant in restaurants"
-        :key="restaurant.ID"
+        :key="restaurant.RestaurantID"
       >
         <div class="restaurant-img">
           <img
@@ -20,7 +20,7 @@
         </div>
         <div class="restaurant-description">
           <div class="restaurant-name">
-            {{ restaurant.Name }}
+            {{ restaurant.RestaurantName }}
           </div>
           <div class="restaurant-address" v-if="restaurant.Address">
             {{ restaurant.Address.substring(0, 20) }}

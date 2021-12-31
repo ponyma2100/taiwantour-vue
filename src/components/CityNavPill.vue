@@ -7,39 +7,54 @@
           <img src="../assets/north.png" alt="northern" />
         </div>
         <p>北部</p>
-        <div class="active" v-show="isShowNorthern"></div>
+        <div
+          :class="{ active: isArea === 'north' }"
+          v-show="isArea === 'north'"
+        ></div>
       </li>
       <li class="nav-item" @click="toggleShowCentral">
         <div class="circle">
           <img src="../assets/north.png" alt="central" />
         </div>
         <p>中部</p>
-        <div class="active" v-show="isShowCentral"></div>
+        <div
+          :class="{ active: isArea === 'central' }"
+          v-show="isArea === 'central'"
+        ></div>
       </li>
       <li class="nav-item" @click="toggleShowSouthern">
         <div class="circle">
           <img src="../assets/north.png" alt="southern" />
         </div>
         <p>南部</p>
-        <div class="active" v-show="isShowSouthern"></div>
+        <div
+          :class="{ active: isArea === 'southern' }"
+          v-show="isArea === 'southern'"
+        ></div>
       </li>
       <li class="nav-item" @click="toggleShowEastern">
         <div class="circle">
-          <img src="../assets/north.png" alt="north" />
+          <img src="../assets/north.png" alt="eastern" />
         </div>
         <p>東部</p>
-        <div class="active" v-show="isShowEastern"></div>
+        <div
+          :class="{ active: isArea === 'eastern' }"
+          v-show="isArea === 'eastern'"
+        ></div>
       </li>
       <li class="nav-item" @click="toggleShowOffshore">
         <div class="circle">
           <img src="../assets/north.png" alt="offshore" />
         </div>
         <p>離島</p>
-        <div class="active" v-show="isShowOffshore"></div>
+        <div
+          :class="{ active: isArea === 'offshore' }"
+          v-show="isArea === 'offshore'"
+        ></div>
       </li>
     </ul>
 
-    <ul class="nav-pills-northern" v-show="isShowNorthern">
+    <ul class="nav-pills-northern" v-show="isArea === 'north'">
       <li
         class="nav-item"
         v-for="city in cityName.northern"
@@ -51,7 +66,7 @@
         >
       </li>
     </ul>
-    <ul class="nav-pills-northern" v-show="isShowCentral">
+    <ul class="nav-pills-northern" v-show="isArea === 'central'">
       <li
         class="nav-item"
         v-for="city in cityName.central"
@@ -63,7 +78,7 @@
         >
       </li>
     </ul>
-    <ul class="nav-pills-northern" v-show="isShowSouthern">
+    <ul class="nav-pills-northern" v-show="isArea === 'southern'">
       <li
         class="nav-item"
         v-for="city in cityName.southern"
@@ -75,7 +90,7 @@
         >
       </li>
     </ul>
-    <ul class="nav-pills-northern" v-show="isShowEastern">
+    <ul class="nav-pills-northern" v-show="isArea === 'eastern'">
       <li
         class="nav-item"
         v-for="city in cityName.eastern"
@@ -87,7 +102,7 @@
         >
       </li>
     </ul>
-    <ul class="nav-pills-northern" v-show="isShowOffshore">
+    <ul class="nav-pills-northern" v-show="isArea === 'offshore'">
       <li
         class="nav-item"
         v-for="city in cityName.offshore"
@@ -116,24 +131,26 @@ export default {
     const isShowOffshore = ref(false);
     const route = useRoute();
     const routerName = ref();
+    const area = ref([]);
+    const isArea = ref("");
     routerName.value = route.name;
+    area.value = ["北部", "中部", "南部", "東部", "離島"];
 
     const toggleShowNorthern = () => {
-      isShowNorthern.value = !isShowNorthern.value;
+      isArea.value = "north";
     };
     const toggleShowCentral = () => {
-      isShowCentral.value = !isShowCentral.value;
+      isArea.value = "central";
     };
     const toggleShowSouthern = () => {
-      isShowSouthern.value = !isShowSouthern.value;
+      isArea.value = "southern";
     };
     const toggleShowEastern = () => {
-      isShowEastern.value = !isShowEastern.value;
+      isArea.value = "eastern";
     };
     const toggleShowOffshore = () => {
-      isShowOffshore.value = !isShowOffshore.value;
+      isArea.value = "offshore";
     };
-
     return {
       toggleShowNorthern,
       toggleShowCentral,
@@ -147,6 +164,8 @@ export default {
       isShowOffshore,
       cityName,
       routerName,
+      area,
+      isArea,
     };
   },
 };

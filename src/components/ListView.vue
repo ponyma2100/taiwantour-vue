@@ -200,12 +200,12 @@ export default {
 .restaurant-container {
   display: flex;
   padding: 15px;
-  padding-left: 100px;
+  padding-left: 85px;
   background-image: url("../assets/rest-bg.png");
 }
 
 .restaurant-carousel {
-  width: 70vw;
+  width: 65vw;
   margin-left: 200px;
 }
 

@@ -4,9 +4,9 @@
       <p class="title-city">{{ $route.params.city }}</p>
       <p>景點介紹</p>
     </div>
-    <div class="spot-container-top">
-      <div v-for="spot in scenicSpots" :key="spot.ID">
-        <div class="spot">
+    <div class="spot-container">
+      <vue-horizontal>
+        <section v-for="spot in scenicSpots" :key="spot.ID" class="spot">
           <div class="spot-img">
             <img
               :src="spot.Picture.PictureUrl1"
@@ -18,23 +18,24 @@
               {{ spot.Name }}
             </div>
             <div class="spot-detail">
-              <!-- {{ spot.Description.substring(0, 50) + "..." }} -->
               {{ spot.DescriptionDetail.substring(0, 50) + "..." }}
             </div>
             <div class="spot-address">
               {{ spot.Address }}
             </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </vue-horizontal>
     </div>
   </div>
 </template>
 
 <script>
 import { useRoute } from "vue-router";
+import VueHorizontal from "vue-horizontal";
 
 export default {
+  components: { VueHorizontal },
   props: ["scenicSpots"],
   setup(props) {
     const route = useRoute();
@@ -43,17 +44,10 @@ export default {
 </script>
 
 <style scoped>
-.spot-container-top,
-.spot-container-bottom {
-  display: flex;
-  align-items: center;
-  overflow: scroll;
-  height: 400px;
+.spot-container {
+  margin: 0 20px;
 }
 
-.spot-container-bottom {
-  margin-left: 80px;
-}
 .spot {
   display: flex;
   flex-direction: column;

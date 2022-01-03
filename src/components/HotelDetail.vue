@@ -7,36 +7,40 @@
       <p>優質住宿</p>
     </div>
     <div class="hotel-container">
-      <div class="hotel" v-for="hotel in hotels" :key="hotel.ID">
-        <div class="hotel-img">
-          <img
-            :src="hotel.Picture.PictureUrl1"
-            :alt="hotel.Picture.PictureDescription1"
-          />
-        </div>
-        <div class="hotel-description">
-          <div class="hotel-name">
-            {{ hotel.HotelName }}
+      <vue-horizontal>
+        <section class="hotel" v-for="hotel in hotels" :key="hotel.ID">
+          <div class="hotel-img">
+            <img
+              :src="hotel.Picture.PictureUrl1"
+              :alt="hotel.Picture.PictureDescription1"
+            />
           </div>
-          <div v-if="hotel.Class" class="hotel-tag">
-            {{ hotel.Class }}
+          <div class="hotel-description">
+            <div class="hotel-name">
+              {{ hotel.HotelName }}
+            </div>
+            <div v-if="hotel.Class" class="hotel-tag">
+              {{ hotel.Class }}
+            </div>
           </div>
-        </div>
-        <div class="hotel-info">
-          <div class="hotel-spec">
-            {{ hotel.Spec ? hotel.Spec.split(";", 1)[0] : "未提供價錢" }}
+          <div class="hotel-info">
+            <div class="hotel-spec">
+              {{ hotel.Spec ? hotel.Spec.split(";", 1)[0] : "未提供價錢" }}
+            </div>
+            <span class="hotel-city">
+              {{ hotel.Address.substring(0, 3) }}
+            </span>
           </div>
-          <span class="hotel-city">
-            {{ hotel.Address.substring(0, 3) }}
-          </span>
-        </div>
-      </div>
+        </section>
+      </vue-horizontal>
     </div>
   </div>
 </template>
 
 <script>
+import VueHorizontal from "vue-horizontal";
 export default {
+  components: { VueHorizontal },
   props: ["hotels"],
   setup(props) {},
 };
@@ -44,11 +48,7 @@ export default {
 
 <style scoped>
 .hotel-container {
-  display: flex;
-  align-items: center;
-  /* flex-wrap: wrap; */
-  overflow-x: scroll;
-  height: 400px;
+  margin: 0 20px;
 }
 .hotel {
   display: flex;

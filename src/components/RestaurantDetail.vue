@@ -7,32 +7,40 @@
       <p>餐飲美食</p>
     </div>
     <div class="restaurant-container">
-      <div
-        v-for="restaurant in restaurants"
-        :key="restaurant.ID"
-        class="restaurant"
-        :style="{
-          'background-image': `url('${restaurant.Picture.PictureUrl1}')`,
-        }"
-      >
-        <div class="mask">
-          <div class="restaurant-description">
-            <div class="restaurant-name">
-              {{ restaurant.Name }}
-            </div>
-            <div class="restaurant-detail">
-              <span class="restaurant-tag">{{ restaurant.Class }}</span>
-              <span class="restaurant-city">{{ restaurant.City }}</span>
+      <vue-horizontal>
+        <section
+          v-for="restaurant in restaurants"
+          :key="restaurant.ID"
+          class="restaurant"
+        >
+          <div
+            class="restaurant-image"
+            :style="{
+              'background-image': `url('${restaurant.Picture.PictureUrl1}')`,
+            }"
+          >
+            <div class="mask">
+              <div class="restaurant-description">
+                <div class="restaurant-name">
+                  {{ restaurant.Name }}
+                </div>
+                <div class="restaurant-detail">
+                  <span class="restaurant-tag">{{ restaurant.Class }}</span>
+                  <span class="restaurant-city">{{ restaurant.City }}</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </vue-horizontal>
     </div>
   </div>
 </template>
 
 <script>
+import VueHorizontal from "vue-horizontal";
 export default {
+  components: { VueHorizontal },
   props: ["restaurants"],
   setup(props) {},
 };
@@ -40,11 +48,7 @@ export default {
 
 <style scoped>
 .restaurant-container {
-  display: flex;
-  align-items: center;
-  /* flex-wrap: wrap; */
-  overflow-x: scroll;
-  height: 400px;
+  margin: 0 20px;
 }
 .restaurant {
   display: flex;
@@ -55,6 +59,12 @@ export default {
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
   border-radius: 10px;
   margin: 10px 30px;
+}
+
+.restaurant-image {
+  width: 290px;
+  height: 349px;
+  position: relative;
 }
 
 .restaurant-description {
@@ -110,12 +120,6 @@ export default {
   font-weight: bold;
 }
 
-.restaurant {
-  justify-content: flex-end;
-  height: 335px;
-  background-size: cover;
-}
-
 .restaurant-name,
 .restaurant-detail > span {
   font-weight: bold;
@@ -140,5 +144,8 @@ export default {
 .mask {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 0 0 10px 10px;
+  position: absolute;
+  position: absolute;
+  bottom: 0;
 }
 </style>

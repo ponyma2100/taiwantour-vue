@@ -7,39 +7,47 @@
       <p>特色活動</p>
     </div>
     <div class="activity-container">
-      <div class="activity" v-for="activity in activities" :key="activity.ID">
-        <div class="activity-img">
-          <img
-            :src="activity.Picture.PictureUrl1"
-            :alt="activity.Picture.PictureDescription1"
-          />
-        </div>
-        <div class="activity-description">
-          <div class="activity-name">
-            {{ activity.Name }}
+      <vue-horizontal>
+        <section
+          class="activity"
+          v-for="activity in activities"
+          :key="activity.ID"
+        >
+          <div class="activity-img">
+            <img
+              :src="activity.Picture.PictureUrl1"
+              :alt="activity.Picture.PictureDescription1"
+            />
           </div>
-          <div class="activity-address" v-if="activity.Address">
-            {{ activity.Address.substring(0, 20) }}
+          <div class="activity-description">
+            <div class="activity-name">
+              {{ activity.Name }}
+            </div>
+            <div class="activity-address" v-if="activity.Address">
+              {{ activity.Address.substring(0, 20) }}
+            </div>
           </div>
-        </div>
-        <div class="activity-tag">
-          <div v-if="activity.Class1" class="activity-tag1">
-            {{ activity.Class1 }}
+          <div class="activity-tag">
+            <div v-if="activity.Class1" class="activity-tag1">
+              {{ activity.Class1 }}
+            </div>
+            <div v-if="activity.Class2" class="activity-tag2">
+              {{ activity.Class2 }}
+            </div>
+            <div class="activity-city" v-if="activity.City">
+              {{ activity.City }}
+            </div>
           </div>
-          <div v-if="activity.Class2" class="activity-tag2">
-            {{ activity.Class2 }}
-          </div>
-          <div class="activity-city" v-if="activity.City">
-            {{ activity.City }}
-          </div>
-        </div>
-      </div>
+        </section>
+      </vue-horizontal>
     </div>
   </div>
 </template>
 
 <script>
+import VueHorizontal from "vue-horizontal";
 export default {
+  components: { VueHorizontal },
   props: ["activities"],
   setup(props) {},
 };
@@ -47,12 +55,9 @@ export default {
 
 <style scoped>
 .activity-container {
-  display: flex;
-  align-items: center;
-  /* flex-wrap: wrap; */
-  overflow-x: scroll;
-  height: 400px;
+  margin: 0 20px;
 }
+
 .activity {
   display: flex;
   flex-direction: column;

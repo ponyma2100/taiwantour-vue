@@ -22,7 +22,7 @@
             <div class="mask">
               <div class="restaurant-description">
                 <div class="restaurant-name">
-                  {{ restaurant.Name }}
+                  {{ restaurant.RestaurantName }}
                 </div>
                 <div class="restaurant-detail">
                   <span class="restaurant-tag">{{ restaurant.Class }}</span>
@@ -135,6 +135,7 @@ export default {
 }
 .restaurant-city {
   display: flex;
+  justify-content: center;
   align-items: center;
   width: 52px;
   height: 26px;

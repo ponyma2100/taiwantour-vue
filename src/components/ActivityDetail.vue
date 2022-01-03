@@ -21,7 +21,7 @@
           </div>
           <div class="activity-description">
             <div class="activity-name">
-              {{ activity.Name }}
+              {{ activity.ActivityName }}
             </div>
             <div class="activity-address" v-if="activity.Address">
               {{ activity.Address.substring(0, 20) }}

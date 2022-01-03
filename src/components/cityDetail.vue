@@ -15,7 +15,7 @@
           </div>
           <div class="spot-description">
             <div class="spot-name">
-              {{ spot.Name }}
+              {{ spot.ScenicSpotName }}
             </div>
             <div class="spot-detail">
               {{ spot.DescriptionDetail.substring(0, 50) + "..." }}
